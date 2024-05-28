@@ -6,4 +6,12 @@
     <RootNamespace>Console_CRUD</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="SQLQuery\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleLibrary\ConsoleLibrary.csproj" />
+  </ItemGroup>
+
 </Project>

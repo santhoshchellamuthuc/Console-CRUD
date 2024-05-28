@@ -6,7 +6,9 @@ namespace Console_CRUD
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            HospitalRecordsConsume obj = new HospitalRecordsConsume();
+            obj.HospitalList();
+
         }
-    }
+}
 }
