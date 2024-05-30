@@ -7,7 +7,6 @@ Phonenumber bigint Not null,
 Pincode bigint Not null)
 
 
---drop table HospitalDetails
 create or alter procedure  HospitalLogin
  
  (@Name nvarchar(50), 
@@ -28,22 +27,20 @@ create or alter procedure  HospitalLogin
  @Pincode)
 end
 
---exec HospitalLogin  'santhosh','santhosh12@gmail.com','wvfwfwqfwqff',909099090,624613
+exec HospitalLogin  'santhosh','santhosh11@gmail.com','wvfwfwqfwqff',909099090,624613
 select *from [HospitalDetails]
 
  create or alter procedure HospitalEdit
-(@Id Bigint,
+(
  @Name nvarchar(100),
- @Email nvarchar(100),
  @Address nvarchar(100),
- @Phonenumber bigint,
- @Pincode bigint
- ) 
+ @Phonenumber bigint) 
  As
  Begin
- update HospitalDetails set Name=@Name, Email=@Email,Address=@Address,Phonenumber=@Phonenumber,Pincode=@Pincode 
- where Id=@Id
+ update HospitalDetails set Address=@Address,Phonenumber=@Phonenumber
+ where Name=@Name
  end
+-- exec  HospitalEdit 'santhosh','sancon@gmail.com',34573698698
 
 -- exec HospitalEdit 2, 'santoshkumar','madesh123@gmail.com','2/23,porulur,dindugul',9090909090,624616
  select *from HospitalDetails

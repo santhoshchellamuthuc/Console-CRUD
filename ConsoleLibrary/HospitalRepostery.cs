@@ -74,11 +74,14 @@ namespace ConsoleLibrary
                 throw;
             }
         }
-        public void HospitalEdit(long Id, string data)
+        public void HospitalEdit(HospitalDetails value)
         {
             try
             {
-                var refer = $"Update HospitalDetails{Id},'{data}'";
+                var update = $"exec HospitalEdit'{value.Name}','{value.Address}', {value.Phonenumber}";
+                refer.Open();
+                refer.Execute(update);
+                refer.Close();
             }
             catch (SqlException)
             {
@@ -89,13 +92,13 @@ namespace ConsoleLibrary
                 throw;
             }
         }
-        public void HospitalRemove(int id)
+        public void HospitalRemove(HospitalDetails value)
         {
             try
             {
-                var value = $"exec HospitalDelete {id}";
+                var remove = $"exec HospitalDelete {value.Id}";
                 refer.Open();
-                refer.Execute(value);
+                refer.Execute(remove);
                 refer.Close();
             }
             catch (SqlException)

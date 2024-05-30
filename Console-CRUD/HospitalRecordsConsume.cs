@@ -11,9 +11,12 @@ namespace Console_CRUD
     {
         int Option;
         HospitalRepostery Repost;
+        HospitalDetails refer;
+
         public HospitalRecordsConsume()
         {
             Repost = new HospitalRepostery();
+            refer = new HospitalDetails();
         }
         public void HospitalList()
         {
@@ -22,7 +25,7 @@ namespace Console_CRUD
                 do
                 {
                     Console.WriteLine("1.CREATE");
-                    Console.WriteLine("2.UPDATE");
+                    Console.WriteLine("2.Edit");
                     Console.WriteLine("3.SELECT");
                     Console.WriteLine("4.SEARCH");
                     Console.WriteLine("5.DELETE");
@@ -36,6 +39,9 @@ namespace Console_CRUD
                             break;
                         case 2:
                             Edit();
+                            break;
+                        case 3:
+                            Remove();
                             break;
 
 
@@ -54,7 +60,6 @@ namespace Console_CRUD
         {
             try
             {
-                HospitalDetails refer = new HospitalDetails();
                 Console.Write("Enter Your Name:");
                 refer.Name = Console.ReadLine();
                 Console.Write("Enter Your Email:");
@@ -77,30 +82,39 @@ namespace Console_CRUD
         {
             try
             {
-                Console.Write("Enter The NewPhoneNumber:");
-                var Newemail = Convert.ToInt64(Console.ReadLine());
-                Console.Write("Enter The ConfirmPhoneNumber:");
-                var Confirmemail = Convert.ToInt64(Console.ReadLine());
+                Console.Write("Enter Your Name:");
+                refer.Name = Console.ReadLine();
+                Console.Write("Enter Your NewAddress:");
+                refer.Address = Console.ReadLine();
+                Console.Write("Enter Your NewPhoneNumber:");
+                refer.Phonenumber = Convert.ToInt64(Console.ReadLine());
 
+                Repost.HospitalEdit(refer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void Remove()
+        {
+            try
+            {
+                Console.Write("Enter Your Id:");
+                refer.Id = Convert.ToInt64(Console.ReadLine());
+                Repost.HospitalRemove(refer);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public IEnumerable<HospitalDetails>Search()
+        {
+            try
+            {
 
-                if (Newemail == Confirmemail)
-                {
-                    Console.Write("Enter The UserName:");
-                    var Id  = Console.ReadLine();
-                    var result= Repost.SPvaildate(Id);
-
-                    if (result.Any())
-                    {
-                        Repost.HospitalEdit(Id, NewP);
-                        Console.WriteLine("Successfully PhoneNumber UPdated ");
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("Somthing Has Wrong");
-
-                    }
-                }
+            }
             catch (Exception)
             {
                 throw;
