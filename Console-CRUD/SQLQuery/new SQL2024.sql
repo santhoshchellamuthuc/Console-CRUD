@@ -51,7 +51,7 @@ select *from [HospitalDetails]
  begin Delete  HospitalDetails where Id=@Id end
 
 
- --exec HospitalDelete 2----------------------------------------------------------------------------------------------------------------------
+ exec HospitalDelete 7
  select *from HospitalDetails
 
  create or alter procedure HospitalSearch
@@ -59,12 +59,19 @@ select *from [HospitalDetails]
  As
  Begin select * from HospitalDetails 
  where
- Id like '%'+@Name+'%' or
- Name like'%'+@Name+'%'or
- Email like'%'+@Name+'%'or
- Address like '%'+@Name+'%' or
- Phonenumber like'%'+@Name+'%' or
- Pincode like'%'+@Name+'%' end
+  Name like'%'+@Name+'%'
+  end
+  exec HospitalSearch 'ABC'
+  Create or alter procedure HospitalShowall
+  As
+  Begin select *from HospitalDetails end 
+
+-- Id like '%'+@Name+'%' or
+-- Email like'%'+@Name+'%'or
+-- Address like '%'+@Name+'%' or
+ --Phonenumber like'%'+@Name+'%' or
+ --Pincode like'%'+@Name+'%'
+ 
 
  -- exec HospitalSearch 909099090
  --  create or alter procedure HospitalSelect

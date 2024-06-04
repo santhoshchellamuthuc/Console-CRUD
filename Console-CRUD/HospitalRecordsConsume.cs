@@ -26,9 +26,9 @@ namespace Console_CRUD
                 {
                     Console.WriteLine("1.CREATE");
                     Console.WriteLine("2.Edit");
-                    Console.WriteLine("3.SELECT");
+                    Console.WriteLine("3.DELETE");
                     Console.WriteLine("4.SEARCH");
-                    Console.WriteLine("5.DELETE");
+                    Console.WriteLine("5.SELECT");
                     Console.WriteLine("Enter Any One Option Select:");
                     Option = Convert.ToInt32(Console.ReadLine());
 
@@ -42,6 +42,12 @@ namespace Console_CRUD
                             break;
                         case 3:
                             Remove();
+                            break;
+                        case 4:
+                            Search();
+                            break;
+                        case 5:
+                            Showall();
                             break;
 
 
@@ -109,11 +115,48 @@ namespace Console_CRUD
                 throw;
             }
         }
-        public IEnumerable<HospitalDetails>Search()
+        public void Search()
         {
             try
             {
+                Console.Write("Enter Your Name:");
+                var name = Console.ReadLine();
+                var result = Repost. Hospitalsearch(name);
+                if(result.Any())
+                {
+                    foreach (var s in result)
+                    {
+                        Console.WriteLine($" {s.Id},{s.Name}, {s.Email}, {s.Phonenumber}, {s.Pincode}"  );
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid Name:"+" "+refer);
+                }
+                
 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public void Showall()
+        {
+            try
+            {
+                var value = Repost.Hospitalshow();
+                if (value == null || value.Count() == 0)
+                {
+                    Console.WriteLine("Records Not Found");
+                }
+                Console.WriteLine($"||Id||Name||Email||Address||PhoneNumber||Pincode||");
+                foreach (var s in value)
+                {
+                    Console.WriteLine($"||{s.Id}||{s.Name}||{s.Email}||{s.Address}||{s.Phonenumber}||{s.Pincode}||");
+
+                }
+                return;
             }
             catch (Exception)
             {

@@ -40,7 +40,7 @@ namespace ConsoleLibrary
         {
             try
             {
-                var insert = ($"select *from HospitalDetails");
+                var insert = ($"exec HospitalShowall");
                 refer.Open();
                 var result = refer.Query<HospitalDetails>(insert);
                 refer.Close();
@@ -55,7 +55,7 @@ namespace ConsoleLibrary
                 throw;
             }
         }
-        public IEnumerable<HospitalDetails> Hospitalsearch(string name)
+        public IEnumerable<HospitalDetails> Hospitalsearch(string  name)
         {
             try
             {
