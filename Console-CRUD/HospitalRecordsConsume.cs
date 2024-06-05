@@ -24,11 +24,11 @@ namespace Console_CRUD
             {
                 do
                 {
-                    Console.WriteLine("1.CREATE");
+                    Console.WriteLine("1.Insert");
                     Console.WriteLine("2.Edit");
-                    Console.WriteLine("3.DELETE");
-                    Console.WriteLine("4.SEARCH");
-                    Console.WriteLine("5.SELECT");
+                    Console.WriteLine("3.Remove");
+                    Console.WriteLine("4.Search");
+                    Console.WriteLine("5.Showall");
                     Console.WriteLine("Enter Any One Option Select:");
                     Option = Convert.ToInt32(Console.ReadLine());
 
