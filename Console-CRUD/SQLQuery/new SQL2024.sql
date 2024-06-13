@@ -32,17 +32,17 @@ select *from [HospitalDetails]
 
  create or alter procedure HospitalEdit
 (
- @Name nvarchar(100),
+ @Id Bigint ,
  @Address nvarchar(100),
  @Phonenumber bigint) 
  As
  Begin
- update HospitalDetails set Address=@Address,Phonenumber=@Phonenumber
- where Name=@Name
+ update HospitalDetails set Phonenumber=@Phonenumber,Address=@Address
+ where Id=@Id
  end
 -- exec  HospitalEdit 'santhosh','sancon@gmail.com',34573698698
 
--- exec HospitalEdit 2, 'santoshkumar','madesh123@gmail.com','2/23,porulur,dindugul',9090909090,624616
+exec HospitalEdit 44,'santhosh',777777
  select *from HospitalDetails
 
  create or alter procedure HospitalDelete
@@ -55,32 +55,31 @@ select *from [HospitalDetails]
  select *from HospitalDetails
 
  create or alter procedure HospitalSearch
- (@Name nvarchar (100))
+ (@Id Bigint)
  As
- Begin select * from HospitalDetails 
+ Begin
+ select * from HospitalDetails 
  where
-  Name like'%'+@Name+'%'
+  Id=@Id
   end
-  exec HospitalSearch 'ABC'
+  exec HospitalSearch 44
   Create or alter procedure HospitalShowall
   As
   Begin select *from HospitalDetails end 
 
--- Id like '%'+@Name+'%' or
--- Email like'%'+@Name+'%'or
--- Address like '%'+@Name+'%' or
- --Phonenumber like'%'+@Name+'%' or
- --Pincode like'%'+@Name+'%'
- 
+create table Locationtap
+(LocationId Bigint identity(1,1),
+LocationName nvarchar(100)not null)
+insert into Locationtap(LocationName)
+values('palani')
 
- -- exec HospitalSearch 909099090
- --  create or alter procedure HospitalSelect
- --(@Id Bigint,
- --@Name nvarchar(100),
- --@Email nvarchar(100),
- --@Address nvarchar(100),
- --@Phonenumber bigint,
- --@Pincode bigint)
-   
- --As
- --Begin select *from HospitalDetails where Name=@Name,Email=@Email,Address=@Address,
+--drop table Locationtap
+create or Alter procedure LocationPoint
+(@LocationId Bigint,
+@LocationName nvarchar(100))
+As
+Begin
+Select *from Locationtap
+end
+
+--exec LocationPoint 1,'palani'
